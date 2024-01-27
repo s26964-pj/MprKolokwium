@@ -4,7 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class TransferServiceTest {
     private TransferService transferService;
@@ -18,7 +17,7 @@ class TransferServiceTest {
     @Test
     void clientCanSendMoney() {
         //when
-        Transfer transfer =  transferService.sendMoney("123", 2000);
+        Transfer transfer = transferService.sendMoney("123", 2000);
         //then
         assertThat(transfer.getTransferType()).isEqualTo(TransferType.ACCEPTED);
     }
@@ -26,7 +25,7 @@ class TransferServiceTest {
     @Test
     void clientCanNotSendMoney() {
         //when
-        Transfer transfer =  transferService.sendMoney("123", 200000);
+        Transfer transfer = transferService.sendMoney("123", 200000);
         //then
         assertThat(transfer.getTransferType()).isEqualTo(TransferType.DECLINED);
     }
@@ -34,7 +33,7 @@ class TransferServiceTest {
     @Test
     void clientCanAddMoney() {
         //when
-        Transfer transfer =  transferService.addMoney("123", 2000);
+        Transfer transfer = transferService.addMoney("123", 2000);
         //then
         assertThat(transfer.getTransferType()).isEqualTo(TransferType.ACCEPTED);
     }
@@ -42,7 +41,7 @@ class TransferServiceTest {
     @Test
     void clientCanNotAddMoney() {
         //when
-        Transfer transfer =  transferService.addMoney("123", -2000);
+        Transfer transfer = transferService.addMoney("123", -2000);
         //then
         assertThat(transfer.getTransferType()).isEqualTo(TransferType.DECLINED);
     }

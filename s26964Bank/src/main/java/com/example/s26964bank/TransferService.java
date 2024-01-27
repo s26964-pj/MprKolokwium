@@ -12,12 +12,12 @@ public class TransferService {
 
     public Transfer sendMoney(String clientID, double amount) {
         Transfer transfer = new Transfer();
+
         Client client = clientStorage.findClientByID(clientID);
 
         double newBalance = client.getBalance() - amount;
-        System.out.println(newBalance);
+
         if (newBalance < 0) {
-            System.out.println("Your balance is to low!");
             transfer.setNewBalance(client.getBalance());
             transfer.setTransferType(TransferType.DECLINED);
         } else {
@@ -36,7 +36,6 @@ public class TransferService {
         newBalance = client.getBalance() + amount;
 
         if (amount <= 0) {
-            System.out.println("Negative value!");
             transfer.setNewBalance(client.getBalance());
             transfer.setTransferType(TransferType.DECLINED);
         } else {

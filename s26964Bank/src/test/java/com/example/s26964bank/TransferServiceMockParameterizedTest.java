@@ -29,7 +29,7 @@ class TransferServiceMockParameterizedTest {
         Client client = newClient();
         //when
         when(clientStorage.findClientByID(anyString())).thenReturn(client);
-        Transfer transfer =  transferService.sendMoney("123", balance);
+        Transfer transfer = transferService.sendMoney("123", balance);
         //then
         assertThat(transfer.getTransferType()).isEqualTo(TransferType.ACCEPTED);
     }
@@ -41,7 +41,7 @@ class TransferServiceMockParameterizedTest {
         Client client = newClient();
         //when
         when(clientStorage.findClientByID(anyString())).thenReturn(client);
-        Transfer transfer =  transferService.sendMoney("123", balance);
+        Transfer transfer = transferService.sendMoney("123", balance);
         //then
         assertThat(transfer.getTransferType()).isEqualTo(TransferType.DECLINED);
     }
@@ -53,7 +53,7 @@ class TransferServiceMockParameterizedTest {
         Client client = newClient();
         //when
         when(clientStorage.findClientByID(anyString())).thenReturn(client);
-        Transfer transfer =  transferService.addMoney("1", balance);
+        Transfer transfer = transferService.addMoney("123", balance);
         //then
         assertThat(transfer.getTransferType()).isEqualTo(TransferType.ACCEPTED);
     }
@@ -65,7 +65,7 @@ class TransferServiceMockParameterizedTest {
         Client client = newClient();
         //when
         when(clientStorage.findClientByID(anyString())).thenReturn(client);
-        Transfer transfer =  transferService.addMoney("1", balance);
+        Transfer transfer = transferService.addMoney("123", balance);
         //then
         assertThat(transfer.getTransferType()).isEqualTo(TransferType.DECLINED);
     }
@@ -87,6 +87,7 @@ class TransferServiceMockParameterizedTest {
                 Arguments.of(5000)
         );
     }
+
     public static Stream<Arguments> inputClientCanAddMoney() {
         return Stream.of(
                 Arguments.of(1999),
@@ -95,6 +96,7 @@ class TransferServiceMockParameterizedTest {
                 Arguments.of(15)
         );
     }
+
     public static Stream<Arguments> inputClientCanNotAddMoney() {
         return Stream.of(
                 Arguments.of(-1),
@@ -104,7 +106,7 @@ class TransferServiceMockParameterizedTest {
         );
     }
 
-    private Client newClient(){
-        return new Client("123","Zenek",4000);
+    private Client newClient() {
+        return new Client("123", "Zenek", 4000);
     }
 }
