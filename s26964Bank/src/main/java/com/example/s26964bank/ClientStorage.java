@@ -29,7 +29,7 @@ public class ClientStorage {
                 .stream()
                 .filter(client -> client.getClientID().equals(clientID))
                 .findFirst()
-                .orElseThrow(() -> new RuntimeException("Nie ma takiego klienta"));
+                .orElseThrow(() -> new RuntimeException("Klient nie jest zarejestrowany"));
     }
 
     @Override
